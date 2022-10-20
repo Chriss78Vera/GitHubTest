@@ -1,7 +1,7 @@
 
 # BackEnd Installation Manual
 
-This backend is made with the Node.js and Express tool. with the JSON database.
+This backend is made with the Node.js and Express tool, with the JSON database.
 
 ## Clone the repository:
 
