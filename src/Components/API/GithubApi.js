@@ -1,14 +1,36 @@
 import axios from "axios";
 import React from "react";
-// RECIBRE EL PARAMETRO DEL URL Y RETORNA EL USUARIO
+
+/**
+ * It's a React hook that returns an object with a state property and a data property. 
+ * 
+ * The state property is a boolean that is true when the data is being fetched and false when the data
+ * has been fetched. 
+ * 
+ * The data property is the data that was fetched. 
+ * 
+ * The hook takes a url as an argument and uses that url to fetch data from the GitHub API. 
+ * 
+ * The hook uses the useState hook to create a state variable called user. 
+ * 
+ * The user variable is an object with a state property and a data property. 
+ * 
+ * The state property is a boolean that is true when the data is being fetched and false when the data
+ * has been fetched. 
+ * 
+ * The data property is the data that was fetched. 
+ * 
+ * The hook uses the useEffect hook to fetch data from the GitHub
+ * @param url - The URL of the API endpoint you want to call.
+ * @returns An object with two properties: state and data.
+ */
 export const GitHubuser = (url) => {
-  // INSTANCIAR EL DATA Y UN ESTADO
   const [user, setUser] = React.useState({ state: true, data: null });
-  // LLAMAR A LA FUNCION PARA TRAER LOS DATOS
+
   React.useEffect(() => {
     getDataUser(url);
   }, [url]);
-  // FUNCION PARA TRAER LOS DATOS : RECIBRE UN URL Y RETORNA EL USUARIO
+
   const getDataUser = (url) => {
     setUser({ state: true, data: null });
     const gitHub_api = axios.create({
@@ -18,9 +40,7 @@ export const GitHubuser = (url) => {
     gitHub_api
       .get()
       .then((response) => {
-        // SETEO DE DATOS EN EL USUARIO - SE CAMBIA EL ESTADO A FALSO UNA VES QUE SE TENGAN LOS DATOS Y SE ALMACENAN LOS DATOS
         setUser({ state: false, data: response.data });
-        
       })
       .catch(function (error) {
         if (error.response) {
@@ -42,6 +62,26 @@ export const GitHubuser = (url) => {
   return user;
 };
 
+/**
+ * It's a React Hook that returns an object with a state property and a data property. 
+ * 
+ * The state property is a boolean that is true when the data is being fetched and false when the data
+ * has been fetched. 
+ * 
+ * The data property is the data that is fetched from the API. 
+ * 
+ * The function takes a url as an argument. 
+ * 
+ * The function uses the url to make a request to the API. 
+ * 
+ * The function returns the data from the API. 
+ * 
+ * The function returns the data from the API in the data property of the object. 
+ * 
+ * The function returns the data from the API in the data property of
+ * @param url - https://api.github.com/users/{username}/repos
+ * @returns An object with two properties: state and data.
+ */
 export const GitHubuserRepos = (url) => {
   const [user, setUser] = React.useState({ state: true, data: null });
 

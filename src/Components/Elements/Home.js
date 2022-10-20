@@ -4,6 +4,7 @@ import "../../Styles/Home.css";
 import { GitHubuser } from "../API/GithubApi";
 import ReposList from "./ReposList";
 const Home = () => {
+  /* A hook that is used to set the state of the url. */
   const [url, setUrl] = React.useState(
     `https://api.github.com/users/Chriss78Vera`
   );

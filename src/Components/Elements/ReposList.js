@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { GitHubuserRepos } from "../API/GithubApi";
 
 const ReposList = () => {
+/* A hook that is used to set the state of the component. */
   const [url, setUrl] = React.useState(
     `https://api.github.com/users/Chriss78Vera/repos`
   );
