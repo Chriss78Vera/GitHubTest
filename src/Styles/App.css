@@ -1,13 +1,15 @@
 .App {
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 .App-header {
-  background-color: #282c34;
+  background-image: linear-gradient( 180.5deg,  rgba(46,255,171,1) 12.3%, rgba(252,251,222,0.46) 92% );
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: dark;
+
 }
 

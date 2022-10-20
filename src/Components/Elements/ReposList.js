@@ -17,7 +17,7 @@ const ReposList = () => {
         <Container>
           <ListGroup>
             {data.map((p) => (
-              <ListGroup.Item variant="primary">
+              <ListGroup.Item variant="dark">
                 <Row>
                   <Col> {p.name}</Col>
                   <Col>
