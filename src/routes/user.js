@@ -1,13 +1,17 @@
 const express = require("express");
 const data = require("../../db.json");
 const router = express.Router();
-
-// Recibe un parametro ID el cual lee el data y lo muestra en pantalla
+/**
+ *  
+ * The data is read if the parameter exists in the database
+ * 
+ * If the data exists, it shows the JSON on the screen, if it is not found, a 404 status is sent.
+ * 
+ * @param id - The URL of the API endpoint you want to call.
+ */
 router.get("/:id", (req, res) => {
-  // Lectura del parametro con el data 
   const dataRes = data[req.params.id];
-  // Si el parametro no existe entonces mandamos el estado 404 y el mensaje de error
-  // Si el parametro existe mostramos el dato en pantalla
+
   if (!dataRes) {
     res.status(404).send("Error 404");
   } else {
@@ -15,23 +19,37 @@ router.get("/:id", (req, res) => {
   }
 });
 
-// Recibre un filtrado con los siguientes parametros {?position=la posición entre admin o user}
+/**
+ *  
+ * Perform a search within the DB.
+ * 
+ * Receive the parameter that is needed for reading
+ * 
+ * @param admin - The URL of the API endpoint you want to call.
+ * 
+ * @param user - The URL of the API endpoint you want to call.
+ * 
+ * If it finds the data, it marks true and shows it, otherwise it marks false and does not show it on the screen.
+ * 
+ * @returns An array with the objects.
+ * 
+ * If no data is found, it returns an empty array.
+ * 
+ */
 router.get("/", (req, res) => {
-  // Recibe el filtrado ingresado
   const filters = req.query;
-  // Se transforma el JSON en un Arreglo de Objetos
+
   const dataRet = Object.values(data);
-  // Se crea la funcion para filtrar los datos con el Arreglo de Objetos
+
   const filteredUsers = dataRet.filter((user) => {
     let isValid = true;
-    // Recorremos el arreglo y buscamos el objeto con el filtrado, si se encuentra el Objeto se marca en verdadero si no en Falso
+
     for (key in filters) {
-      // Buscamos el objeto filtrado con position = valor ingresado
       isValid = isValid && user[key] == filters[key];
     }
     return isValid;
   });
-  // Retorna los objetos que se encontraron con el valor de verdadero, en caso de no encontrar ninguno retorna un arreglo vacio
+
   res.send(filteredUsers);
 });
 
